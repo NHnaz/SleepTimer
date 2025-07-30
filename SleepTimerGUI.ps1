@@ -14,7 +14,7 @@ $label.Location = New-Object System.Drawing.Point(20,20)
 $label.Size = New-Object System.Drawing.Size(100,20)
 $form.Controls.Add($label)
 
-# Input TextBox
+# Input Box
 $textBox = New-Object System.Windows.Forms.TextBox
 $textBox.Location = New-Object System.Drawing.Point(130, 18)
 $textBox.Size = New-Object System.Drawing.Size(100,20)
@@ -39,7 +39,7 @@ $trayIcon.Icon = [System.Drawing.SystemIcons]::Information
 $trayIcon.Visible = $true
 $trayIcon.Text = "Sleep Timer"
 
-# Timer Logic
+# Timer L
 $timerJob = $null
 $startButton.Add_Click({
     $minutes = $textBox.Text -as [int]
@@ -56,7 +56,7 @@ $startButton.Add_Click({
     $startButton.Enabled = $false
     $cancelButton.Enabled = $true
 
-    # Start background job
+    # Srt background
     $script:timerJob = Start-Job {
         param($seconds)
         Start-Sleep -Seconds $seconds
@@ -65,7 +65,7 @@ $startButton.Add_Click({
     } -ArgumentList $seconds
 })
 
-# Cancel Logic
+# Cancels L
 $cancelButton.Add_Click({
     if ($timerJob -and ($timerJob.State -eq 'Running')) {
         Stop-Job $timerJob | Out-Null
